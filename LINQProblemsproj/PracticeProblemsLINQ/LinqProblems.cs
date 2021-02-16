@@ -17,13 +17,8 @@ namespace PracticeProblemsLINQ
         public static List<string> RunProblem1(List<string> words)
         {
             //code
-            var stringToSearch = words.Where(w => w.Contains("th"));
-            foreach (var item in stringToSearch)
-            {
-                Console.WriteLine(item);
-            }
+
             //return
-            return stringToSearch.ToList();
 
         }
         #endregion
@@ -34,13 +29,8 @@ namespace PracticeProblemsLINQ
         public static List<string> RunProblem2(List<string> names)
         {
             //code
-            var stringNoDuplicates = names.Where(n => n.Contains(n.FirstOrDefault()));
-            foreach (var stringName in stringNoDuplicates)
-            {
-                Console.WriteLine(stringName);
-            }
+
             //return
-            return stringNoDuplicates.ToList();
 
         }
         #endregion
@@ -51,13 +41,8 @@ namespace PracticeProblemsLINQ
         public static Customer RunProblem3(List<Customer> customers)
         {
             //code
-            var theOne = customers.Where(c => c.FirstName == "Mike");
-            foreach (var name in theOne)
-            {
-                Console.WriteLine(name.FirstName);
-            }
+
             //return
-            return theOne.FirstOrDefault();
 
         }
         #endregion
@@ -69,13 +54,8 @@ namespace PracticeProblemsLINQ
         public static Customer RunProblem4(List<Customer> customers)
         {
             //code
-            var newCustomer = customers.Where(c => c.Id == 3).Single();
-            newCustomer.FirstName = "Bob";
-            newCustomer.LastName = "Dylan";
 
-            Console.WriteLine(newCustomer.FirstName + " " + newCustomer.LastName);
             //return
-            return newCustomer;
 
         }
         #endregion
@@ -89,26 +69,23 @@ namespace PracticeProblemsLINQ
         public static double RunProblem5(List<string> classGrades)
         {
             //code
-            var stringToDrop = classGrades.Where(c => c != classGrades.Min());
-            var average = stringToDrop.Select(double.Parse).Sum();
-            Console.WriteLine(average);
+
             //return
-            return average;
-            //Couldn't get this working right^^
+
         }
         #endregion
 
-        //#region Bonus Problem 1
+        #region Bonus Problem 1
         //(5 points) Bonus Problem 1
         //Write a method that takes in a string of letters(i.e. “Terrill”) 
         //and returns an alphabetically ordered string corresponding to the letter frequency(i.e. "E1I1L2R2T1")
-        //public static string RunBonusProblem1(string word)
-        //{
-        //    //code
+        public static string RunBonusProblem1(string word)
+        {
+            //code
 
-        //    //return
+            //return
 
-        //}
-        //#endregion
+        }
+        #endregion
     }
 }
