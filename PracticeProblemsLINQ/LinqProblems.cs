@@ -17,9 +17,14 @@ namespace PracticeProblemsLINQ
         public static List<string> RunProblem1(List<string> words)
         {
             //code
-
+            
+            List<string> wordWithTh = words.FindAll(w => w.Contains("th"));
+            foreach (var w in wordWithTh)
+            { Console.WriteLine(w); }
+            Console.ReadLine();
+            
             //return
-
+            return wordWithTh;
         }
         #endregion
 
@@ -29,9 +34,15 @@ namespace PracticeProblemsLINQ
         public static List<string> RunProblem2(List<string> names)
         {
             //code
-
+            var name = names;
+            var distinctNames = name.Distinct();
+            foreach (var n in distinctNames)
+            {
+                Console.WriteLine(n);
+            }
+            
             //return
-
+            return names;
         }
         #endregion
 
@@ -41,9 +52,11 @@ namespace PracticeProblemsLINQ
         public static Customer RunProblem3(List<Customer> customers)
         {
             //code
-
+            Customer mike = customers.Find(c => c.FirstName == "Mike");
+            Console.WriteLine(mike.FirstName);
+            Console.ReadLine();
             //return
-
+            return mike;
         }
         #endregion
 
@@ -54,9 +67,14 @@ namespace PracticeProblemsLINQ
         public static Customer RunProblem4(List<Customer> customers)
         {
             //code
-
+            Customer changeName = customers.Find(c => c.Id == 3);
+            Console.WriteLine(changeName.FirstName+ " "+ changeName.LastName);
+            changeName.FirstName = "Rob";
+            changeName.LastName = "Clark";
+            Console.WriteLine(changeName.FirstName + " " + changeName.LastName);
+            Console.ReadLine();
             //return
-
+            return changeName;
         }
         #endregion
 
@@ -69,9 +87,19 @@ namespace PracticeProblemsLINQ
         public static double RunProblem5(List<string> classGrades)
         {
             //code
+            double studentsAverages = 0;
+            foreach (string item in classGrades)
+            {
+                string[] studentGrades = item.Split(',');
+                var intGrades = studentGrades.Select(s => Int32.Parse(s)).ToList();
+                intGrades.Remove(intGrades.Min());
+                studentsAverages += intGrades.Average();
+            }
+            var classAverage = studentsAverages / classGrades.Count;
+            Console.WriteLine(classAverage);
 
             //return
-
+            return classAverage;
         }
         #endregion
 
@@ -82,9 +110,39 @@ namespace PracticeProblemsLINQ
         public static string RunBonusProblem1(string word)
         {
             //code
+            word = word.ToUpper();
+            char[] letterslist = word.ToArray();
+            Array.Sort(letterslist);
+            string compressedString = "";
+            int count = 1;
+            for (int i =0; i<letterslist.Length; i++)
+            {
+                if (i == 0)
+                {
+                    compressedString += letterslist[i];
+                    compressedString += count;
+                }
+                else if (i + 1 == letterslist.Length)
+                {
+                    compressedString += letterslist[i];
+                    compressedString += count;
 
+                }
+                else if (letterslist[i] == letterslist[i + 1])
+                {
+                    count++;
+                }
+                else
+                {
+                    compressedString += letterslist[i];
+                    compressedString += count;
+                    count = 1;
+                }
+            }
             //return
-
+            Console.WriteLine(compressedString);
+            Console.ReadLine();
+            return compressedString;
         }
         #endregion
     }
