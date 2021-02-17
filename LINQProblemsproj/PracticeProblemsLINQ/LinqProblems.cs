@@ -18,14 +18,7 @@ namespace PracticeProblemsLINQ
         {
             //code
 
-            var stringToSearch = words.Where(w => w.Contains("th"));
-            foreach (var item in stringToSearch)
-            {
-                Console.WriteLine(item);
-            }
             //return
-            return stringToSearch.ToList();
-
 
         }
         #endregion
@@ -37,14 +30,7 @@ namespace PracticeProblemsLINQ
         {
             //code
 
-            var stringNoDuplicates = names.Where(n => n.Contains(n.FirstOrDefault()));
-            foreach (var stringName in stringNoDuplicates)
-            {
-                Console.WriteLine(stringName);
-            }
             //return
-            return stringNoDuplicates.ToList();
-
 
         }
         #endregion
@@ -56,14 +42,7 @@ namespace PracticeProblemsLINQ
         {
             //code
 
-            var theOne = customers.Where(c => c.FirstName == "Mike");
-            foreach (var name in theOne)
-            {
-                Console.WriteLine(name.FirstName);
-            }
             //return
-            return theOne.FirstOrDefault();
-
 
         }
         #endregion
@@ -76,14 +55,7 @@ namespace PracticeProblemsLINQ
         {
             //code
 
-            var newCustomer = customers.Where(c => c.Id == 3).Single();
-            newCustomer.FirstName = "Bob";
-            newCustomer.LastName = "Dylan";
-
-            Console.WriteLine(newCustomer.FirstName + " " + newCustomer.LastName);
             //return
-            return newCustomer;
-
 
         }
         #endregion
@@ -98,19 +70,7 @@ namespace PracticeProblemsLINQ
         {
             //code
 
-            double studentsAverages = 0;
-            foreach (string item in classGrades)
-            {
-                string[] studentGrades = item.Split(',');
-                var intGrades = studentGrades.Select(s => Int32.Parse(s)).ToList();
-                intGrades.Remove(intGrades.Min());
-                studentsAverages += intGrades.Average();
-            }
-            var classAverage = studentsAverages / classGrades.Count;
-            Console.WriteLine(classAverage);
-
             //return
-            return classAverage;
 
         }
         #endregion
@@ -119,45 +79,13 @@ namespace PracticeProblemsLINQ
         //(5 points) Bonus Problem 1
         //Write a method that takes in a string of letters(i.e. “Terrill”) 
         //and returns an alphabetically ordered string corresponding to the letter frequency(i.e. "E1I1L2R2T1")
-
         public static string RunBonusProblem1(string word)
         {
             //code
-            word = word.ToUpper();
-            char[] letterslist = word.ToArray();
-            Array.Sort(letterslist);
-            string compressedString = "";
-            int count = 1;
-            for (int i =0; i<letterslist.Length; i++)
-            {
-                if (i == 0)
-                {
-                    compressedString += letterslist[i];
-                    compressedString += count;
-                }
-                else if (i + 1 == letterslist.Length)
-                {
-                    compressedString += letterslist[i];
-                    compressedString += count;
 
-                }
-                else if (letterslist[i] == letterslist[i + 1])
-                {
-                    count++;
-                }
-                else
-                {
-                    compressedString += letterslist[i];
-                    compressedString += count;
-                    count = 1;
-                }
-            }
             //return
-            Console.WriteLine(compressedString);
-            Console.ReadLine();
-            return compressedString;
+
         }
         #endregion
-
     }
 }
